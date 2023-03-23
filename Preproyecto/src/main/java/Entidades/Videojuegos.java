@@ -20,10 +20,13 @@ import javax.persistence.Table;
  * @author Gabriel
  */
 @Entity
-@Table(name = "tblvideojuegos")
+@Table(name = "videojuegos")
 public class Videojuegos implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public Videojuegos(){
+        
+    }
 
     public Videojuegos(Integer id, String nombre, String clasificacion) {
         this.id = id;
@@ -39,7 +42,7 @@ public class Videojuegos implements Serializable {
     public Videojuegos(Integer id) {
         this.id = id;
     }
-    
+
     @Id
     @Column(name = "idEmpleado")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,9 +53,9 @@ public class Videojuegos implements Serializable {
 
     @Column(name = "clasificacion", length = 10, nullable = false)
     private String clasificacion;
-    
-        @OneToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="idgenero", nullable = false)
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "idgenero", nullable = false)
     private Genero genero;
 
     public Videojuegos(String nombre, String clasificacion, Genero genero) {
@@ -60,8 +63,15 @@ public class Videojuegos implements Serializable {
         this.clasificacion = clasificacion;
         this.genero = genero;
     }
-        
-        
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
     public String getNombre() {
         return nombre;
     }

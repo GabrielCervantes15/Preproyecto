@@ -10,18 +10,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Gabriel
  */
 @Entity
+@Table(name = "Genero")
 public class Genero implements Serializable {
  @Id
     @Column(name = "idGenero")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+      public Genero(){
+        
+    }
     @Column(name = "Genero",nullable = false,length = 100)
     private String genero;
 
